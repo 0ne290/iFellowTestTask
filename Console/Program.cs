@@ -12,11 +12,18 @@ internal static class Program
     {
         try
         {
+            System.Console.Write"Enter path to configuration file: ");
+            var configFilePath = System.Console.ReadLine();
+            
             var config = new ConfigurationBuilder().AddJsonFile("D:\\Development\\Projects\\.NET\\IFellowTestTask\\Console\\appsettings.json").Build();
             
             ExecuteTask1(config);
             ExecuteTask2(config);
             ExecuteTask3(config);
+            ExecuteTask4(config);
+
+            System.Console.WriteLine("Program has completed successfully. To exit, press any key...");
+            System.Console.ReadKey();
 
             return 0;
         }
@@ -74,5 +81,19 @@ internal static class Program
         System.Console.WriteLine($"\tTemperature in celsius: {temperatureInCelsius}");
         System.Console.WriteLine($"\tConvert to: {convertTo}");
         System.Console.WriteLine($"\tConversion result: {conversionResult}");
+    }
+
+    private static void ExecuteTask4(IConfigurationRoot config)
+    {
+        var task4Config = config.GetRequiredSection("Task4");
+        var hours = double.Parse(task4Config["Hours"] ?? throw new Exception("Format of configuration file content is invalid."));
+        var minutes = double.Parse(task4Config["Minutes"] ?? throw new Exception("Format of configuration file content is invalid."));
+
+        var clock = new Clock(hours, minutes);
+
+        System.Console.WriteLine("Task4:");
+        System.Console.WriteLine($"\tHours: {hours}");
+        System.Console.WriteLine($"\tMinutes: {minutes}");
+        System.Console.WriteLine($"\tAngle in degrees between clock arrows: {clock.AngleInDegreesBetweenArrows}");
     }
 }
