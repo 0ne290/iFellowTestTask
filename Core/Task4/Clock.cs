@@ -8,14 +8,15 @@ public class Clock
             throw new Exception("Task 4 : Hours is invalid.");
         if (minutes is < 0 or > 59)
             throw new Exception("Task 4 : Minutes is invalid.");
+
+        if (hours > 12)
+            hours -= 12;
         
-        
+        var hoursInDegrees = hours * 30;
+        var minutesInDegrees = minutes * 6;
+
+        AngleInDegreesBetweenArrows = Math.Abs(minutesInDegrees - hoursInDegrees);
     }
-    
-    // Тут должны быть аппроксимирующие функции, отображающие часы и минуты на круглых часах в градусы. Получены они из
-    // заданных точек с помощью таких методов, как линейная, квадратичная, кубическая, показательная, логарифмическая,
-    // гиперболическая, экспоненциальная аппроксимация и аппроксимация степенной функцией. На самом деле, учитывая
-    // специфику задачи, единственно верным способом тут является линейная аппроксимация, но я все равно решил оставить
-    // другие способы, т. к. рассчитывал я, естественно, не в ручную, а с помощью этого сервиса:
-    // https://planetcalc.ru/5992/.
+
+    public double AngleInDegreesBetweenArrows { get; }
 }
