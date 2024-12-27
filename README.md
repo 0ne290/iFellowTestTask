@@ -1,23 +1,21 @@
-# Код четвертой таски я писал на телефоне и, соответственно, приложение я не запускал и не тестировал. Завтра допилю приложение и удалю этот заголовок.
-
 Для работы программы требуется конфигурационный JSON-файл. Уже готовый вариант представлен в папке проекта Console. Путь к файлу программа запрашивает в самом начале.
 
 ## Формат содержимого конфигурационного файла:
 ```json
 {
   "Task1": {
-    "RandomNumbersCount": int
+    "RandomNumbersCount": "int[1;+infinity)"
   },
   "Task2": {
-    "SourceText": string
+    "SourceText": "any string"
   },
   "Task3": {
-    "TemperatureInCelsius": double
-    "ConvertTo": "Kelvin" || "Fahrenheit"
+    "TemperatureInCelsius": "double[-273.15;+infinity)",
+    "ConvertTo": "Kelvin || Fahrenheit"
   },
   "Task4": {
-    "Hours": double,
-    "Minutes": double
+    "Hours": "double[0;23]",
+    "Minutes": "double[0;59]"
   }
 }
 ```

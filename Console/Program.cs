@@ -2,6 +2,7 @@
 using Core.Task1;
 using Core.Task2;
 using Core.Task3;
+using Core.Task4;
 using Microsoft.Extensions.Configuration;
 
 namespace Console;
@@ -12,10 +13,10 @@ internal static class Program
     {
         try
         {
-            System.Console.Write"Enter path to configuration file: ");
-            var configFilePath = System.Console.ReadLine();
+            System.Console.Write("Enter path to configuration file: ");
+            var configFilePath = System.Console.ReadLine()!;
             
-            var config = new ConfigurationBuilder().AddJsonFile("D:\\Development\\Projects\\.NET\\IFellowTestTask\\Console\\appsettings.json").Build();
+            var config = new ConfigurationBuilder().AddJsonFile(configFilePath).Build();
             
             ExecuteTask1(config);
             ExecuteTask2(config);
